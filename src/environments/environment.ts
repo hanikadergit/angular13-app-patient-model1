@@ -14,3 +14,8 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+export const Myenvironment = {
+  production : false,
+  host : "http://localhost:3000",
+  unreachableHost:"http://localhost:8000"
+};
