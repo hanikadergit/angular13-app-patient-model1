@@ -13,6 +13,4 @@ export interface Patient {
     enSalleAttente:boolean;
     enFileAttenteSoin:boolean;
     enFileAttenteMed:boolean;
-    
-
 }

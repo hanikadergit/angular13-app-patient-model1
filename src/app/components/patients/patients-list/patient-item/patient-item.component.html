@@ -1,0 +1,18 @@
+<tr *ngIf="patient">
+    <td>{{patient.sexe}}</td>
+    <td>{{patient.mobile}}</td>
+    <td>{{patient.age}}</td>
+    <td>{{patient.nom}}</td>
+    <td>{{patient.prenom}}</td>
+    <td>{{patient.tourSalle}}</td>
+    <td>
+        <button class="btn btn-danger btn-sm" (click)="onDelete(patient)">
+            <span class="fa fa-trash-o"></span>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-danger btn-sm" (click)="onEdite(patient)">
+            <span class="fa fa-edit"></span>
+        </button>
+    </td>
+</tr>

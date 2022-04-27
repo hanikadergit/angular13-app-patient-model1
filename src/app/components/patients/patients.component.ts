@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
 import { Patient } from 'src/app/model/patient.model';
 import { PatientsService} from 'src/app/services/patients.service';
-import { AppDataState, DataStateEnum } from 'src/app/state/patient.state';
+import { ActionEvent, AppDataState, DataStateEnum, PatientActionsTypes } from 'src/app/state/patient.state';
 
 @Component({
   selector: 'app-patients',
@@ -27,7 +27,17 @@ export class PatientsComponent implements OnInit {
       catchError(err => of({dataState: DataStateEnum.ERROR,errorMessage:err.errorMessage}))
     );
   }
-  onPatientsAttenteMedecin(){
+  onGetPatientsSalleAttente(){
+    
+    this.patients$ =  this.patientService.getPatientsSalleAttente().pipe(
+      map(data=>{        
+        return({dataState: DataStateEnum.LOADED,data:data})
+      }),
+      startWith({dataState: DataStateEnum.LOADING}),
+      catchError(err => of({dataState: DataStateEnum.ERROR,errorMessage:err.errorMessage}))
+    );
+  }
+  onGetPatientsAttenteMedecin(){
     
     this.patients$ =  this.patientService.getPatientsAttenteMedecin().pipe(
       map(data=>{        
@@ -69,4 +79,19 @@ export class PatientsComponent implements OnInit {
   onEdite(p:Patient){
     this.router.navigateByUrl("/editPatient/"+p.id); 
   }
+  onActionEvent($event:ActionEvent){
+    switch($event.type){
+      case PatientActionsTypes.GET_ALL_PATIENTS: this.onGetAllPatients(); break; 
+      case PatientActionsTypes.GET_PATIENTS_SALLE_ATTENT: this.onGetPatientsSalleAttente(); break; 
+      case PatientActionsTypes.GET_PATIENTS_ATT_MED: this.onGetPatientsAttenteMedecin(); break; 
+      case PatientActionsTypes.GET_PATIENTS_ATT_MED: this.onGetPatientsAttenteMedecin(); break;
+      case PatientActionsTypes.GET_PATIENTS_ATT_SOIN: this.ongetPatientsAttenteSoin(); break; 
+      case PatientActionsTypes.SEARCH_PATIENTS: this.onSearch($event.payload); break; 
+      case PatientActionsTypes.NEW_PATIENT: this.onNewPatient(); break;
+      case PatientActionsTypes.EDIT_PATIENT: this.onEdite($event.payload); break;
+      case PatientActionsTypes.DELETE_PATIENT: this.onDelete($event.payload); break;
+    }
+  }
+
 }
+

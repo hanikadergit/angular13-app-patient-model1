@@ -1,0 +1,31 @@
+<div class="container">
+    <ng-container *ngIf="patientsInput$ | async as result" [ngSwitch]="result.dataState">
+        <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+            Loading...
+        </ng-container> 
+        <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+           <div class="alert-danger">
+                {{result.ErrorMessage}}
+           </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+            <table class="table">
+                <tr> 
+                    <th>الجنس</th><th>الهاتف</th><th>الفمر</th><th>اللقب</th><th>الأســم</th><th>رقم</th>
+                </tr>
+                <app-patient-item [patient]="p" 
+                    (eventEmitter)="onActionEvent($event)" 
+                    *ngFor="let p of result.data" style="display: contents;">
+                </app-patient-item>
+
+            </table>
+        </ng-container> 
+     
+        <div class="container" *ngIf="patientsInput$">
+    
+    
+        </div>      
+    </ng-container>
+    
+</div>
+

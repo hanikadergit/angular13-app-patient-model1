@@ -12,17 +12,21 @@ export class PatientsService{
         let host = Myenvironment.host;
         return this.http.get<Patient[]>(host+"/patients");
     }
+    getPatientsSalleAttente(){
+        let host = Myenvironment.host;
+        return this.http.get<Patient[]>(host+"/patients?enSalleAttente=true");        
+    }
     getPatientsAttenteMedecin():Observable<Patient[]>{
         let host = Myenvironment.host;
-        return this.http.get<Patient[]>(host+"/patients?fileAttente=Medecin");
+        return this.http.get<Patient[]>(host+"/patients?enFileAttenteMed=true");
     }
     getPatientsAttenteSoin():Observable<Patient[]>{ 
         let host = Myenvironment.host;
-        return this.http.get<Patient[]>(host+"/patients?fileAttente=Soin");
+        return this.http.get<Patient[]>(host+"/patients?enFileAttenteSoin=true");
     }
     getPatientsEnConsultation():Observable<Patient[]>{
         let host = Myenvironment.host;
-        return this.http.get<Patient[]>(host+"/patients?stade='Consultation'");
+        return this.http.get<Patient[]>(host+"/patients?enFileAttenteMed=true");
     }
     searchPatients(keyword:string):Observable<Patient[]>{
         let host = Myenvironment.host;
