@@ -10,19 +10,19 @@ import { ActionEvent, AppDataState, DataStateEnum, PatientActionsTypes } from 's
 })
 export class PatientsListComponent implements OnInit {
   @Input() patientsInput$:Observable<AppDataState<Patient[]>>|null=null;
-  @Output() patientEventEmitter:EventEmitter<ActionEvent>=new EventEmitter<ActionEvent>();
+ // @Output() patientEventEmitter:EventEmitter<ActionEvent>=new EventEmitter<ActionEvent>();
   readonly DataStateEnum = DataStateEnum;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
+  /*
   onDelete(p:Patient){
     this.patientEventEmitter.emit({type:PatientActionsTypes.EDIT_PATIENT,payload:p});
   }
   onEdite(p:Patient){
     this.patientEventEmitter.emit({type:PatientActionsTypes.EDIT_PATIENT,payload:p});
-  }
   onActionEvent($event:ActionEvent){
     this.patientEventEmitter.emit($event);
-  }
+  }*/
 }

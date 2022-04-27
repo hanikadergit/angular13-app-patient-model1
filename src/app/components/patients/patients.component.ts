@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
 import { Patient } from 'src/app/model/patient.model';
+import { EventDrivenService } from 'src/app/services/event.driven.service';
 import { PatientsService} from 'src/app/services/patients.service';
 import { ActionEvent, AppDataState, DataStateEnum, PatientActionsTypes } from 'src/app/state/patient.state';
 
@@ -14,9 +15,15 @@ export class PatientsComponent implements OnInit {
   patients$:Observable<AppDataState<Patient[]>>|null=null;
   readonly DataStateEnum = DataStateEnum;
 
-  constructor(private patientService:PatientsService, private router:Router) { }
+  constructor(
+    private patientService:PatientsService, 
+    private router:Router,
+    private eventDrivenService:EventDrivenService) { }
 
   ngOnInit(): void {
+    this.eventDrivenService.sourceEventSubjectObservable.subscribe((actionEvent:ActionEvent)=>{
+      this.onActionEvent(actionEvent);
+    })
   }
   onGetAllPatients(){
     this.patients$ =  this.patientService.getAllPatients().pipe(

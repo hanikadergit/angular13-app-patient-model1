@@ -13,8 +13,7 @@
                 <tr> 
                     <th>الجنس</th><th>الهاتف</th><th>الفمر</th><th>اللقب</th><th>الأســم</th><th>رقم</th>
                 </tr>
-                <app-patient-item [patient]="p" 
-                    (eventEmitter)="onActionEvent($event)" 
+                <app-patient-item [patient]="p"                     
                     *ngFor="let p of result.data" style="display: contents;">
                 </app-patient-item>
 
