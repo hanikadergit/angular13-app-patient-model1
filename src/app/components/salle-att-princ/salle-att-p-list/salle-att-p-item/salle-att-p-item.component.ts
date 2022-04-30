@@ -1,17 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Patient } from 'src/app/model/patient.model';
-import { ActionEvent, PatientActionsTypes } from 'src/app/state/patient.state';
-import { PatientsService } from 'src/app/services/patients.service';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { EventDrivenService } from 'src/app/services/event.driven.service';
+import { PatientActionsTypes } from 'src/app/state/patient.state';
 
 @Component({
-  selector: 'app-patient-item',
-  templateUrl: './patient-item.component.html',
-  styleUrls: ['./patient-item.component.css']
+  selector: 'app-salle-att-p-item',
+  templateUrl: './salle-att-p-item.component.html',
+  styleUrls: ['./salle-att-p-item.component.css']
 })
-export class PatientItemComponent implements OnInit {
+export class SalleAttPItemComponent implements OnInit {
   @Input() patient:Patient|null=null;
   //@Output() eventEmitter: EventEmitter<ActionEvent>=new EventEmitter<ActionEvent>();
   constructor(private eventDrivrenService:EventDrivenService) { }
@@ -34,4 +31,5 @@ export class PatientItemComponent implements OnInit {
     //this.eventEmitter.emit({type:PatientActionsTypes.DELETE_PATIENT,payload:ptient})
     this.eventDrivrenService.publishEvent({type:PatientActionsTypes.ABSENT_PATIENT,payload:patient});
   }
+
 }

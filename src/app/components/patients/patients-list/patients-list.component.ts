@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Patient } from 'src/app/model/patient.model';
-import { ActionEvent, AppDataState, DataStateEnum, PatientActionsTypes } from 'src/app/state/patient.state';
+import { AppDataState, DataStateEnum } from 'src/app/state/patient.state';
 
 @Component({
   selector: 'app-patients-list',

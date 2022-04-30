@@ -3,14 +3,8 @@ export interface Patient {
     nom : string;
     prenom : string;
     sexe : CharacterData;
-    dateNaissance:Date;
     age:number;
-    mobile: string;
-    datePresence:Date;
-    tourSalle:number;
-    tourAttMed:number;
-    tourAttSoin:number;
-    enSalleAttente:boolean;
-    enFileAttenteSoin:boolean;
-    enFileAttenteMed:boolean;
+    tour:number;
+    servi:boolean;
+    absent:boolean;
 }

@@ -37,6 +37,7 @@ export class PatientsNavBarComponent implements OnInit {
     //this.patientEnventEmitter.emit({type:PatientActionsTypes.SEARCH_PATIENTS,payload:dataForm} );
     this.eventDrivenService.publishEvent({type:PatientActionsTypes.SEARCH_PATIENTS,payload:dataForm});
   }
+
   onActionEvent($event:any){
 
   }

@@ -14,7 +14,7 @@ export class PatientsService{
     }
     getPatientsSalleAttente(){
         let host = Myenvironment.host;
-        return this.http.get<Patient[]>(host+"/patients?enSalleAttente=true");        
+        return this.http.get<Patient[]>(host+"/patients?servi=false");        
     }
     getPatientsAttenteMedecin():Observable<Patient[]>{
         let host = Myenvironment.host;
@@ -48,4 +48,15 @@ export class PatientsService{
         let host = Myenvironment.host;
         return this.http.put<Patient>(host+"/patients/"+patient.id,patient);
     } 
+    serviPatient(patient:Patient){
+        let host = Myenvironment.host;
+        patient.servi = true;
+        return this.http.put<Patient>(host+"/patients/"+patient.id,patient);
+    } 
+    absentPatient(patient:Patient){
+        let host = Myenvironment.host;
+        patient.absent = !patient.absent;
+        return this.http.put<Patient>(host+"/patients/"+patient.id,patient);
+    }  
+    
 }

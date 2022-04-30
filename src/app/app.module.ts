@@ -13,6 +13,16 @@ import { PatientEditComponent } from './components/patient-edit/patient-edit.com
 import { PatientsNavBarComponent } from './components/patients/patients-nav-bar/patients-nav-bar.component';
 import { PatientsListComponent } from './components/patients/patients-list/patients-list.component';
 import { PatientItemComponent } from './components/patients/patients-list/patient-item/patient-item.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { SalleAttPrincComponent } from './components/salle-att-princ/salle-att-princ.component';
+import { SalleAttPListComponent } from './components/salle-att-princ/salle-att-p-list/salle-att-p-list.component';
+import { SalleAttPItemComponent } from './components/salle-att-princ/salle-att-p-list/salle-att-p-item/salle-att-p-item.component';
+import { SalleAttPNavBarComponent } from './components/salle-att-princ/salle-att-p-nav-bar/salle-att-p-nav-bar.component';
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +33,12 @@ import { PatientItemComponent } from './components/patients/patients-list/patien
     PatientEditComponent,
     PatientsNavBarComponent,
     PatientsListComponent,
-    PatientItemComponent
+    PatientItemComponent,
+    StatsComponent,
+    SalleAttPrincComponent,
+    SalleAttPListComponent,
+    SalleAttPItemComponent,
+    SalleAttPNavBarComponent
   ],
   imports: [
     BrowserModule,

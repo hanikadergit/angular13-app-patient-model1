@@ -6,8 +6,12 @@ export enum PatientActionsTypes{
     SEARCH_PATIENTS="[Patient] Search  Patients",
     NEW_PATIENT="[Patient] New  Patient",
     EDIT_PATIENT="[Patient] Edit  Patient",
-    DELETE_PATIENT="[Patient] Delete  Patient",
- 
+    DELETE_PATIENT="[Patient] Delete  Patient",    
+    PATIENT_ADDED="[Patient]  Patient Added",
+    PATIENT_UPDATED="[Patient]  Patient Updated",
+    EXAM_PATIENT="[Patient]  Examin Patient",
+    ABSENT_PATIENT="[Patient]  Patient Absent",
+    GET_ALL_PATIENTS_SA="[Patient]  ALL Patient Salle attente"
 }
 export interface ActionEvent{
     type:PatientActionsTypes,

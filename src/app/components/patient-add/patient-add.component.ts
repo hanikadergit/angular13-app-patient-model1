@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EventDrivenService } from 'src/app/services/event.driven.service';
 import { PatientsService } from 'src/app/services/patients.service';
+import { PatientActionsTypes } from 'src/app/state/patient.state';
 
 @Component({
   selector: 'app-patient-add',
@@ -19,7 +21,10 @@ patientFormGroup:FormGroup=new FormGroup({
   tourSalle:new FormControl(0) 
 });
 submitted:boolean=false;
-  constructor(private fb:FormBuilder, private patientsService:PatientsService) { }
+  constructor(
+    private fb:FormBuilder, 
+    private patientsService:PatientsService,
+    private  eventDrivenService: EventDrivenService) { }
 
   ngOnInit(): void {
     this.patientFormGroup=this.fb.group({
@@ -27,10 +32,9 @@ submitted:boolean=false;
       prenom:["",Validators.required],
       sexe:["M",Validators.required],
       age:["0",Validators.required],
-      enSalleAttente:[true,Validators.required],
-      enFileAttenteSoin:[false,Validators.required],
-      enFileAttenteMed:[false,Validators.required],
-      tourSalle:["0",Validators.required]
+      tour:["0",Validators.required],
+      servi:[false,Validators.required],
+      absent:[false,Validators.required]
     })
   }
   onSavePatient(){
@@ -38,6 +42,7 @@ submitted:boolean=false;
     if(this.patientFormGroup.invalid) return;
     this.patientsService.savePatient(this.patientFormGroup.value)
     .subscribe(date => {
+      this.eventDrivenService.publishEvent({type:PatientActionsTypes.PATIENT_ADDED})
       alert('success Saving Patient');
     });
   }

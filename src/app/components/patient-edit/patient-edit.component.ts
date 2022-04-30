@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { EventDrivenService } from 'src/app/services/event.driven.service';
 import { PatientsService } from 'src/app/services/patients.service';
+import { PatientActionsTypes } from 'src/app/state/patient.state';
 
 @Component({
   selector: 'app-patient-edit',
@@ -15,6 +17,7 @@ export class PatientEditComponent implements OnInit {
   submitted:boolean=false;
   constructor(private activatedRoute:ActivatedRoute, 
     private patientsService:PatientsService,
+    private eventDrivenService: EventDrivenService,
     private fb:FormBuilder) {
     this.patientId=activatedRoute.snapshot.params['id'];
    }
@@ -28,16 +31,16 @@ export class PatientEditComponent implements OnInit {
       prenom:[patient.prenom,Validators.required],
       sexe:[patient.sexe,Validators.required],
       age:[patient.age,Validators.required],
-      enSalleAttente:[patient.enSalleAttente,Validators.required],
-      enFileAttenteSoin:[patient.enFileAttenteSoin,Validators.required],
-      enFileAttenteMed:[patient.enFileAttenteMed,Validators.required],
-      tourSalle:[patient.tourSalle,Validators.required]
+      tour:[patient.tour,Validators.required],
+      servi:[patient.servi,Validators.required],
+      absent:[patient.servi,Validators.required],
     })
     } );
   }
   onUpdatePatient(){
     this.patientsService.updatePatient(this.patientFormGroup?.value)
     .subscribe(data => {
+      this.eventDrivenService.publishEvent({type:PatientActionsTypes.PATIENT_UPDATED})
       alert("Success patient updated")
     })
   }
