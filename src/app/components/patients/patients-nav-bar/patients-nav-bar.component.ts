@@ -1,7 +1,6 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
-import {  Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventDrivenService } from 'src/app/services/event.driven.service';
-import { ActionEvent, PatientActionsTypes } from 'src/app/state/patient.state';
+import {  PatientActionsTypes } from 'src/app/state/patient.state';
 @Component({
   selector: 'app-patients-nav-bar',
   templateUrl: './patients-nav-bar.component.html',

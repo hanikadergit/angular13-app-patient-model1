@@ -2,7 +2,7 @@ export interface Patient {
     id:number;
     nom : string;
     prenom : string;
-    sexe : CharacterData;
+    sexe : string;
     age:number;
     tour:number;
     servi:boolean;

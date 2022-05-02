@@ -1,9 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Patient } from 'src/app/model/patient.model';
-import { ActionEvent, PatientActionsTypes } from 'src/app/state/patient.state';
-import { PatientsService } from 'src/app/services/patients.service';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { PatientActionsTypes } from 'src/app/state/patient.state';
 import { EventDrivenService } from 'src/app/services/event.driven.service';
 
 @Component({

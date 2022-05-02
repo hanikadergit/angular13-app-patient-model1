@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -17,8 +17,12 @@ import { StatsComponent } from './components/stats/stats.component';
 import { SalleAttPrincComponent } from './components/salle-att-princ/salle-att-princ.component';
 import { SalleAttPListComponent } from './components/salle-att-princ/salle-att-p-list/salle-att-p-list.component';
 import { SalleAttPItemComponent } from './components/salle-att-princ/salle-att-p-list/salle-att-p-item/salle-att-p-item.component';
-import { SalleAttPNavBarComponent } from './components/salle-att-princ/salle-att-p-nav-bar/salle-att-p-nav-bar.component';
-
+import { SalleAttPNavBarComponent } from './components/salle-att-princ/salle-att-p-list/salle-att-p-nav-bar/salle-att-p-nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from './layout/layout.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { UsersModule } from './users/users.module';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -38,14 +42,22 @@ import { SalleAttPNavBarComponent } from './components/salle-att-princ/salle-att
     SalleAttPrincComponent,
     SalleAttPListComponent,
     SalleAttPItemComponent,
-    SalleAttPNavBarComponent
+    SalleAttPNavBarComponent,
+    
+
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatListModule,
+    MatSidenavModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
